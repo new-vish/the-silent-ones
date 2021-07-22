@@ -97,11 +97,37 @@ setlocal enabledelayedexpansion
             exit /b %ERRORLEVEL%
          )
 
+         set exit_code=0
          %bash% "echo Y|pacman -S mingw-w64-x86_64-python3-gobject"
          if 0 neq %ERRORLEVEL% (
             echo Could not install mingw-w64-x86_64-python3-gobject..
-            exit /b %ERRORLEVEL%
+            set exit_code=1
          )
+         
+         
+         rem start: for https://wiki.gnome.org/Projects/gtkmm/MSWindows
+         %bash% "echo Y|pacman -S mingw-w64-x86_64-gcc"
+         if 0 neq %ERRORLEVEL% (
+            echo Could not install mingw-w64-x86_64-gcc..
+            set exit_code=1
+         )
+         
+         
+         %bash% "echo Y|pacman -S mingw-w64-x86_64-gtkmm3"
+         if 0 neq %ERRORLEVEL% (
+            echo Could not install mingw-w64-x86_64-gtkmm3..
+            set exit_code=1
+         )
+         
+         %bash% "echo Y|pacman -S pkg-config"
+         if 0 neq %ERRORLEVEL% (
+            echo Could not install pkg-config..
+            set exit_code=1
+         )
+         
+         rem end: for rem start: for https://wiki.gnome.org/Projects/gtkmm/MSWindows
+         
+         exit /b %exit_code%
          
       )
       
