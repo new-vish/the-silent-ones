@@ -10,7 +10,7 @@ Procedure Based on https://www.gtk.org/docs/installations/windows/ as it stands 
 gtk script `setup_gtk.bat` depends on `setup_msys2.bat` since MSYS2 is needed by gtk.
 
 ## MSYS2
-setup gtk
+Procedure based on https://www.msys2.org/ as it stands on 15th July 2021.
 
 Call `script_name` with parameters either of following to get help: `-h, --help, /?, -?`
 
